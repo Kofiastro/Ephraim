@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.log
+
+# Original attachment files are preserved locally; optimized copies live in public/.
+/Ephraim Addae Sam_CV_.pdf
+/WhatsApp Image *.jpeg
