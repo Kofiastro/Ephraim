@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaArrowDown, FaArrowUpRightFromSquare, FaEnvelope, FaPhone, FaWhatsapp } from 'react-icons/fa6';
 
 const contact = {
@@ -40,6 +41,8 @@ const gallery = [
   { src: '/access-point.jpeg', alt: 'Wireless access point installed on a ceiling' },
   { src: '/wireless-installation.jpeg', alt: 'Technician working on network equipment' },
   { src: '/network-maintenance.jpeg', alt: 'Outdoor wireless installation in progress' },
+  { src: '/gallery/billing-overview.jpeg', alt: 'Billing system: live dashboard for a Wi-Fi hotspot network', width: 1600, height: 732, top: true },
+  { src: '/gallery/billing-payments.jpeg', alt: 'Billing system: payments ledger for hotspot subscribers', width: 1600, height: 732, top: true },
 ];
 
 const stackGroups = [
@@ -66,6 +69,7 @@ export default function Page() {
           </a>
           <nav aria-label='Main navigation' className='flex items-center gap-5 text-sm text-slate-500'>
             <a href='#work' className='transition hover:text-slate-950'>Work</a>
+            <Link href='/gallery' className='transition hover:text-slate-950'>Gallery</Link>
             <a href='#about' className='transition hover:text-slate-950'>About</a>
             <a href='#contact' className='transition hover:text-slate-950'>Contact</a>
           </nav>
@@ -88,7 +92,7 @@ export default function Page() {
             </div>
           </div>
           <div className='flex flex-col items-start gap-6 md:items-end'>
-            <Image src='/ephraim-portrait.jpeg' width={240} height={240} alt='Portrait of Ephraim Addae Sam' className='h-44 w-44 rounded-full object-cover sm:h-56 sm:w-56' priority />
+            <Image src='/ephraim-portrait.jpeg' width={240} height={240} alt='Portrait of Ephraim Addae Sam' className='h-44 w-44 rounded-full object-cover object-top sm:h-56 sm:w-56' priority />
             <p className='max-w-xs text-left text-sm leading-6 text-slate-500 md:text-right'>
               Technical support and network infrastructure work grounded in careful installation, clear diagnosis, and dependable follow-through.
             </p>
@@ -140,9 +144,10 @@ export default function Page() {
         <section className='border-y border-slate-200 py-16'>
           <div className='grid gap-8 md:grid-cols-[0.7fr_1.3fr] md:items-center'>
             <div>
-              <p className='section-kicker'>Partner</p>
-              <h2 className='mt-2 text-3xl font-semibold tracking-[-0.04em] text-slate-950'>Supporting dependable public infrastructure.</h2>
+              <p className='section-kicker'>Partners</p>
+              <h2 className='mt-2 text-3xl font-semibold tracking-[-0.04em] text-slate-950'>Supporting dependable infrastructure for trusted organisations.</h2>
             </div>
+            <div className='grid gap-5'>
             <div className='flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-center'>
               <Image
                 src='/department-roads-logo.png'
@@ -159,6 +164,39 @@ export default function Page() {
                 </a>
               </div>
             </div>
+            <div className='flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-center'>
+              <Image
+                src='/shalina-logo.png'
+                width={165}
+                height={118}
+                alt='Shalina Healthcare logo'
+                className='h-24 w-full object-contain sm:h-28 sm:w-64'
+              />
+              <div className='border-t border-slate-200 pt-4 text-sm leading-6 text-slate-500 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0'>
+                <p className='font-medium text-slate-900'>Shalina Healthcare</p>
+                <p className='mt-1'>Pharmaceuticals, Africa</p>
+                <a href='https://shalina.com/' target='_blank' rel='noopener noreferrer' className='mt-3 inline-flex items-center gap-2 font-medium text-amber-700 hover:text-slate-950'>
+                  Visit website <FaArrowUpRightFromSquare className='text-xs' />
+                </a>
+              </div>
+            </div>
+            <div className='flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-6 sm:flex-row sm:items-center'>
+              <Image
+                src='/nova-logo.png'
+                width={1200}
+                height={372}
+                alt='Nova Business School Africa logo'
+                className='h-24 w-full object-contain sm:h-28 sm:w-64'
+              />
+              <div className='border-t border-slate-200 pt-4 text-sm leading-6 text-slate-500 sm:border-l sm:border-t-0 sm:pl-5 sm:pt-0'>
+                <p className='font-medium text-slate-900'>Nova Business School Africa</p>
+                <p className='mt-1'>Accra, Ghana</p>
+                <a href='https://nova.edu.gh/' target='_blank' rel='noopener noreferrer' className='mt-3 inline-flex items-center gap-2 font-medium text-amber-700 hover:text-slate-950'>
+                  Visit website <FaArrowUpRightFromSquare className='text-xs' />
+                </a>
+              </div>
+            </div>
+            </div>
           </div>
         </section>
 
@@ -168,15 +206,20 @@ export default function Page() {
               <p className='section-kicker'>Field work</p>
               <h2 className='mt-2 text-3xl font-semibold tracking-[-0.04em] text-slate-950'>Practical work in real environments.</h2>
             </div>
-            <span className='hidden font-mono text-xs text-slate-400 sm:block'>04 / projects</span>
+            <span className='hidden font-mono text-xs text-slate-400 sm:block'>06 / projects</span>
           </div>
           <div className='grid gap-4 sm:grid-cols-2'>
             {gallery.map((item) => (
               <figure key={item.src} className='group overflow-hidden rounded-2xl bg-slate-100'>
-                <Image src={item.src} width={768} height={1024} alt={item.alt} className='h-72 w-full object-cover transition duration-500 group-hover:scale-105' />
+                <Image src={item.src} width={item.width ?? 768} height={item.height ?? 1024} alt={item.alt} className={`h-72 w-full object-cover transition duration-500 group-hover:scale-105 ${item.top ? 'object-top' : ''}`} />
                 <figcaption className='border border-t-0 border-slate-200 bg-white px-5 py-4 text-sm text-slate-600'>{item.alt}</figcaption>
               </figure>
             ))}
+          </div>
+          <div className='mt-6'>
+            <Link href='/gallery' className='inline-flex items-center gap-2 text-sm font-medium text-amber-700 transition hover:text-slate-950'>
+              View full gallery <FaArrowUpRightFromSquare className='text-xs' />
+            </Link>
           </div>
         </section>
 
